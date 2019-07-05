@@ -32,7 +32,8 @@
         /*margin: 10px 20px;*/
     }
 
-    .loginInput {width: 100%;
+    .loginInput {
+        width: 100%;
         margin: 5px 0px;
         height: 45px;
         padding-left: 10px;
@@ -53,6 +54,7 @@
         padding: 0 10px;
         margin: 5px 0px;
     }
+
     .registerInput {
         width: 100%;
         margin: 5px 0px;
@@ -119,29 +121,75 @@
 
 <div class="authenticationWrapper">
     <div class="row">
-        <form action="" class="col-lg-6">
+        <form action="authServer.php" method="POST"class="col-lg-6" id="loginForm">
             <div class="formStyle" style="">
                 <h1>Login Form</h1>
-                <input type="email" class="loginInput" name="loginEmail" placeholder="Email">
-                <input type="password" class="loginInput" name="loginPassword" placeholder="Password">
+                <label class="loginErrorMessage"></label>
+                <input type="email" class="loginInput" id="loginEmail" name="loginEmail" placeholder="Email">
+                <input type="password" class="loginInput" id="loginPassword" name="loginPassword"
+                       placeholder="Password">
                 <div style="display: flex;justify-content: flex-end">
-                    <input type="button" class="loginButton" name="login" value="LOGIN">
+                    <input type="submit" class="loginButton" name="signIn" value="LOGIN">
                 </div>
             </div>
         </form>
-        <form action="" class="col-lg-6" style="">
-            <div class=" formStyle" style="">
-                <h1 >Register Form</h1>
-                <input type="email" class="registerInput" name="registerEmail" placeholder="Email">
-                <input type="password" class="registerInput" name="registerPassword" placeholder="Password">
-                <input type="password" class="registerInput" name="registerConfirmPassword"
+        <form action="authServer.php" method="POST" class="col-lg-6" id="registerForm">
+            <div class="formStyle" style="">
+                <h1>Register Form</h1>
+                <label class="registerErrorMessage"></label>
+                <input type="text" class="registerInput" id="registerFirstName" name="registerFirstName"
+                       placeholder="First Name">
+                <input type="text" class="registerInput" id="registerLastName" name="registerLastName"
+                       placeholder="Last Name">
+                <input type="email" class="registerInput" id="registerEmail" name="registerEmail" placeholder="Email">
+                <input type="password" class="registerInput" id="registerPassword" name="registerPassword"
+                       placeholder="Password">
+                <input type="password" class="registerInput" id="registerConfirmPassword" name="registerConfirmPassword"
                        placeholder="Confirm Password">
                 <div style="display: flex;justify-content: flex-end">
-                    <input type="button" class="registerButton" name="login" value="SIGNUP">
+                    <input type="submit" class="registerButton" name="signUp" value="SIGNUP">
                 </div>
             </div>
         </form>
     </div>
 </div>
+<script>
+    $(document).ready(function () {
+        $("#loginForm").on("submit", function (event) {
+            if ($("#loginEmail").val() == "") {
+                $(".loginErrorMessage").html("Please enter Email.");
+                return false
+            } else if ($("#loginPassword").val() == "") {
+                $(".loginErrorMessage").html("Please enter Password.");
+                return false;
+            }
+            return true;
+        });
+        $("#registerForm").on("submit", function (event) {
+            if ($("#registerFirstName").val() == "") {
+                $(".registerErrorMessage").html("Please enter First Name.");
+                return false;
+            } else if ($("#registerLastName").val() == "") {
+                $(".registerErrorMessage").html("Please enter Last Name.");
+                return false;
+            } else if ($("#registerEmail").val() == "") {
+                $(".registerErrorMessage").html("Please enter Email.");
+                return false
+            } else if ($("#registerPassword").val() == "") {
+                $(".registerErrorMessage").html("Please enter Password.");
+                return false;
+            } else if ($("#registerConfirmPassword").val() == "") {
+                $(".registerErrorMessage").html("Please Confirm your Password.");
+                return false;
+            } else if ($("#registerPassword").val() !== $("#registerConfirmPassword").val()) {
+                $(".registerErrorMessage").html("Password and Confirm Password did not matched.");
+                return false;
+            }
+            return true;
+        });
+    });
+
+
+</script>
 </body>
 </html>
