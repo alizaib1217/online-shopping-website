@@ -1,5 +1,9 @@
 <?php
-include_once "config/db_config.php";
+include_once "../config/db_config.php";
+session_start();
+if (!isset($_SESSION['email'])) {
+    header("Location: index.php");
+}
 ?>
 
 
@@ -15,7 +19,7 @@ include_once "config/db_config.php";
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
     <script src="./js/jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="../css/style.css">
 
 
     <style>
@@ -31,7 +35,7 @@ include_once "config/db_config.php";
 <body>
 <div class="">
     <div class="container-fluid header-wrapper">
-        <img src="./assets/icons/logo.png" class="logo" alt="Logo">
+        <img src="../assets/icons/logo.png" class="logo" alt="Logo">
         <!--    <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
         <ul class="nav">
             <li class="nav-item">
@@ -56,18 +60,18 @@ include_once "config/db_config.php";
 
         <!--    </div>-->
         <div class="header-icons">
-            <a href="./res/Authentication/authentication.php" target="tab">
-                <img src="./assets/icons/person.png" class="person-profile" alt="Profile">
+            <a href="./Authentication/authentication.php" target="tab">
+                <img src="../assets/icons/person.png" class="person-profile" alt="Profile">
             </a>
-            <a href="./res/Cart/cart.php" target="tab">
-                <img src="./assets/icons/cart.png" class="my-cart" alt="Cart">
+            <a href="./Cart/cart.php" target="tab">
+                <img src="../assets/icons/cart.png" class="my-cart" alt="Cart">
             </a>
         </div>
     </div>
 </div>
 <div class="banner">
-    <img src="assets/images/banner.jpg" class="banner-img">
-    <img src="./assets/icons/logo_1.png" class="banner-logo" alt="Logo">
+    <img src="../assets/images/banner.jpg" class="banner-img">
+    <img src="../assets/icons/logo_1.png" class="banner-logo" alt="Logo">
 </div>
 <div class="container">
     <div class="col-sm-4 itemContainer">
@@ -97,16 +101,16 @@ include_once "config/db_config.php";
 </div>
 <div class="container productsContainer">
     <div class="productItemContainer col-lg-4 col-md-6">
-        <img src="assets/images/product1.jpg" alt="Product1" class="productItem">
+        <img src="../assets/images/product1.jpg" alt="Product1" class="productItem">
         <div class="productItemHover">
             <div class="priceTag">$40</div>
             <div>
                 <div class="productViewIcon">
-                    <img src="./assets/icons/eye.png" alt="" height="25px" width="20px">
+                    <img src="../assets/icons/eye.png" alt="" height="25px" width="20px">
                 </div>
                 <div class="productViewIcon" style="background-color: #333333">
-                    <a href="./res/Cart/cart.php" target="tab">
-                        <img src="./assets/icons/cart.png" alt="" height="20px" width="20px">
+                    <a href="./Cart/cart.php" target="tab">
+                        <img src="../assets/icons/cart.png" alt="" height="20px" width="20px">
                     </a>
                 </div>
             </div>
@@ -114,48 +118,48 @@ include_once "config/db_config.php";
     </div>
 
     <div class="productItemContainer col-lg-4 ">
-        <img src="assets/images/product1.jpg" alt="Product1" class="productItem">
+        <img src="../assets/images/product1.jpg" alt="Product1" class="productItem">
         <div class="productItemHover">
             <div class="priceTag">$40</div>
             <div>
                 <div class="productViewIcon">
-                    <img src="./assets/icons/eye.png" alt="" height="25px" width="20px">
+                    <img src="../assets/icons/eye.png" alt="" height="25px" width="20px">
                 </div>
                 <div class="productViewIcon" style="background-color: #333333">
-                    <a href="./res/Cart/cart.php" target="tab">
-                        <img src="./assets/icons/cart.png" alt="" height="20px" width="20px">
+                    <a href="./Cart/cart.php" target="tab">
+                        <img src="../assets/icons/cart.png" alt="" height="20px" width="20px">
                     </a>
                 </div>
             </div>
         </div>
     </div>
     <div class="productItemContainer col-lg-4 ">
-        <img src="assets/images/product1.jpg" alt="Product1" class="productItem">
+        <img src="../assets/images/product1.jpg" alt="Product1" class="productItem">
         <div class="productItemHover">
             <div class="priceTag">$40</div>
             <div>
                 <div class="productViewIcon">
-                    <img src="./assets/icons/eye.png" alt="" height="25px" width="20px">
+                    <img src="../assets/icons/eye.png" alt="" height="25px" width="20px">
                 </div>
                 <div class="productViewIcon" style="background-color: #333333">
-                    <a href="./res/Cart/cart.php" target="tab">
-                        <img src="./assets/icons/cart.png" alt="" height="20px" width="20px">
+                    <a href="./Cart/cart.php" target="tab">
+                        <img src="../assets/icons/cart.png" alt="" height="20px" width="20px">
                     </a>
                 </div>
             </div>
         </div>
     </div>
     <div class="productItemContainer col-lg-4 ">
-        <img src="assets/images/product1.jpg" alt="Product1" class="productItem">
+        <img src="../assets/images/product1.jpg" alt="Product1" class="productItem">
         <div class="productItemHover">
             <div class="priceTag">$40</div>
             <div>
                 <div class="productViewIcon">
-                    <img src="./assets/icons/eye.png" alt="" height="25px" width="20px">
+                    <img src="../assets/icons/eye.png" alt="" height="25px" width="20px">
                 </div>
                 <div class="productViewIcon" style="background-color: #333333">
-                    <a href="./res/Cart/cart.php" target="tab">
-                        <img src="./assets/icons/cart.png" alt="" height="20px" width="20px">
+                    <a href="./Cart/cart.php" target="tab">
+                        <img src="../assets/icons/cart.png" alt="" height="20px" width="20px">
                     </a>
                 </div>
             </div>
@@ -165,12 +169,6 @@ include_once "config/db_config.php";
 
 </div>
 
-
-<footer>
-    <strong>
-        Hadi Tariq 15009065366 <br> Ali Zaib 15009065245
-    </strong>
-</footer>
 
 </body>
 </html>
