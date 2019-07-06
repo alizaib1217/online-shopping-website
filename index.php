@@ -64,7 +64,29 @@
     <img src="assets/images/banner.jpg" class="banner-img">
     <img src="./assets/icons/logo_1.png" class="banner-logo" alt="Logo">
 </div>
-
+<div class="container">
+    <div class="col-sm-4 itemContainer">
+        <img src="#" alt="">
+        <h3 class="itemHeading">
+            FREE SHIPPING
+        </h3>
+        <p class="itemDescp">Free worldwide shipping</p>
+    </div>
+    <div class="col-sm-4 itemContainer" style="background-color: #EBEBEB;">
+        <img src="#" alt="">
+        <h3 class="itemHeading">
+            FAST DELIVERY
+        </h3>
+        <p class="itemDescp">Fast worldwide delivery</p>
+    </div>
+    <div class="col-sm-4 itemContainer">
+        <img src="#" alt="">
+        <h3 class="itemHeading">
+            MONEY BACK
+        </h3>
+        <p class="itemDescp">30 Days money back</p>
+    </div>
+</div>
 <div class="pageHeading">
     <p>LATEST PRODUCTS</p>
 </div>
@@ -137,6 +159,13 @@
 
 
 </div>
+
+
+<footer>
+    <strong>
+        Hadi Tariq 15009065366 <br> Ali Zaib 15009065245
+    </strong>
+</footer>
 
 </body>
 </html>
