@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Checkout</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -38,6 +38,14 @@
         width: 50%;
         height: 45px;
         margin-bottom: 10px;
+    }
+    .checkOutBanner{
+        height: 86px;
+        width: 320px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
     }
 </style>
 
@@ -77,7 +85,7 @@
 </div>
 <div class="banner">
     <img src="../../assets/images/banner.jpg" class="banner-img">
-    <img src="../../assets/icons/logo_1.png" class="banner-logo" alt="Logo">
+    <img src="../../assets/icons/checkout.png" class="checkOutBanner" alt="Logo">
 </div>
 
 <div class="row" style="margin:0 0 50px 0;padding:0 10%;">

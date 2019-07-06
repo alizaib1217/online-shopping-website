@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-    <title>Bootstrap Example</title>
+    <title>Home</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
@@ -51,8 +51,12 @@
 
         <!--    </div>-->
         <div class="header-icons">
-            <img src="./assets/icons/person.png" class="person-profile" alt="Profile">
-            <img src="./assets/icons/cart.png" class="my-cart" alt="Cart">
+            <a href="./res/Authentication/authentication.php" target="tab">
+                <img src="./assets/icons/person.png" class="person-profile" alt="Profile">
+            </a>
+            <a href="./res/Cart/cart.php" target="tab">
+                <img src="./assets/icons/cart.png" class="my-cart" alt="Cart">
+            </a>
         </div>
     </div>
 </div>
@@ -62,7 +66,7 @@
 </div>
 
 <div class="pageHeading">
-<p>LATEST PRODUCTS</p>
+    <p>LATEST PRODUCTS</p>
 </div>
 <div class="container productsContainer">
     <div class="productItemContainer col-lg-4 col-md-6">
@@ -74,8 +78,9 @@
                     <img src="./assets/icons/eye.png" alt="" height="25px" width="20px">
                 </div>
                 <div class="productViewIcon" style="background-color: #333333">
-                    <img src="./assets/icons/cart.png" alt="" height="20px" width="20px">
-
+                    <a href="./res/Cart/cart.php" target="tab">
+                        <img src="./assets/icons/cart.png" alt="" height="20px" width="20px">
+                    </a>
                 </div>
             </div>
         </div>
@@ -90,8 +95,9 @@
                     <img src="./assets/icons/eye.png" alt="" height="25px" width="20px">
                 </div>
                 <div class="productViewIcon" style="background-color: #333333">
-                    <img src="./assets/icons/cart.png" alt="" height="20px" width="20px">
-
+                    <a href="./res/Cart/cart.php" target="tab">
+                        <img src="./assets/icons/cart.png" alt="" height="20px" width="20px">
+                    </a>
                 </div>
             </div>
         </div>
@@ -105,8 +111,9 @@
                     <img src="./assets/icons/eye.png" alt="" height="25px" width="20px">
                 </div>
                 <div class="productViewIcon" style="background-color: #333333">
-                    <img src="./assets/icons/cart.png" alt="" height="20px" width="20px">
-
+                    <a href="./res/Cart/cart.php" target="tab">
+                        <img src="./assets/icons/cart.png" alt="" height="20px" width="20px">
+                    </a>
                 </div>
             </div>
         </div>
@@ -120,8 +127,9 @@
                     <img src="./assets/icons/eye.png" alt="" height="25px" width="20px">
                 </div>
                 <div class="productViewIcon" style="background-color: #333333">
-                    <img src="./assets/icons/cart.png" alt="" height="20px" width="20px">
-
+                    <a href="./res/Cart/cart.php" target="tab">
+                        <img src="./assets/icons/cart.png" alt="" height="20px" width="20px">
+                    </a>
                 </div>
             </div>
         </div>

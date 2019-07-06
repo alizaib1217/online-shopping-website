@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Cart</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -48,6 +48,14 @@
         justify-content: center;
         align-items: center;
     }
+    .cartBanner{
+        height: 106px;
+        width: 320px;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+    }
 </style>
 
 <body>
@@ -86,7 +94,7 @@
 </div>
 <div class="banner">
     <img src="../../assets/images/banner.jpg" class="banner-img">
-    <img src="../../assets/icons/logo_1.png" class="banner-logo" alt="Logo">
+    <img src="../../assets/icons/shoppinCart.png" class="cartBanner" alt="Logo">
 </div>
 
 
@@ -158,9 +166,8 @@
             <a href="#" class="deleteItem">x</a>
         </div>
     </div>
-
-
 </div>
+<a href="../Checkout/checkout.php" target="tab">Checkout</a>
 
 
 </body>
