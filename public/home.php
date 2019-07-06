@@ -1,9 +1,9 @@
 <?php
 include_once "../config/db_config.php";
-session_start();
-if (!isset($_SESSION['email'])) {
-    header("Location: index.php");
-}
+//session_start();
+//if (!isset($_SESSION['email'])) {
+//    header("Location: index.php");
+//}
 ?>
 
 
@@ -33,42 +33,8 @@ if (!isset($_SESSION['email'])) {
     </style>
 </head>
 <body>
-<div class="">
-    <div class="container-fluid header-wrapper">
-        <img src="../assets/icons/logo.png" class="logo" alt="Logo">
-        <!--    <div class="collapse navbar-collapse" id="navbarSupportedContent">-->
-        <ul class="nav">
-            <li class="nav-item">
-                <a class="nav-link active" href="#">HOME</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">ABOUT</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">BLOG</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">SHOP</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">PAGES</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">CONTACT</a>
-            </li>
-        </ul>
+<?php require "./_inc/header.php" ?>
 
-        <!--    </div>-->
-        <div class="header-icons">
-            <a href="./Authentication/authentication.php" target="tab">
-                <img src="../assets/icons/person.png" class="person-profile" alt="Profile">
-            </a>
-            <a href="./Cart/cart.php" target="tab">
-                <img src="../assets/icons/cart.png" class="my-cart" alt="Cart">
-            </a>
-        </div>
-    </div>
-</div>
 <div class="banner">
     <img src="../assets/images/banner.jpg" class="banner-img">
     <img src="../assets/icons/logo_1.png" class="banner-logo" alt="Logo">
@@ -169,6 +135,7 @@ if (!isset($_SESSION['email'])) {
 
 </div>
 
+<?php require "./_inc/footer.php" ?>
 
 </body>
 </html>

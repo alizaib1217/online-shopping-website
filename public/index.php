@@ -3,7 +3,6 @@ include_once "../config/db_config.php";
 session_start();
 if (isset($_SESSION['email'])) {
     header("Location: home.php");
-
 }
 $loginError = '';
 $registerError = '';
@@ -12,6 +11,8 @@ $registerError = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     session_start();
+    $target_dir = "../uploads/";
+    $uploadOk = 1;
     $registerFirstName = isset($_POST["registerFirstName"]) ? $_POST["registerFirstName"] : "Query Parameter Not passed.";
     $registerLastName = isset($_POST["registerLastName"]) ? $_POST["registerLastName"] : "Query Parameter Not passed.";
     $registerEmail = isset($_POST["registerEmail"]) ? $_POST["registerEmail"] : "Query Parameter Not passed.";
@@ -21,31 +22,56 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $loginEmail = isset($_POST["loginEmail"]) ? $_POST["loginEmail"] : "Query Parameter Not passed.";
     $loginPassword = isset($_POST["loginPassword"]) ? $_POST["loginPassword"] : "Query Parameter Not passed.";
 
+
     if (isset($_POST['signUp'])) {
-        $sql = "select * from user where (email='$registerEmail');";
-        $result = $conn->query($sql);
-        if ($result->num_rows > 0) {
-            $registerError = "Email is already registered in database.";
+        $target_file = $target_dir . time() . basename($_FILES["fileToUpload"]["name"]);
+        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        $registerImage = "";
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
+            && $imageFileType != "gif") {
+            $registerError = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            $uploadOk = 0;
+        }
+
+        if ($_FILES["fileToUpload"]["size"] > 500000) {
+            $registerError = "Sorry, your file is too large.";
+            $uploadOk = 0;
+        }
+        if ($uploadOk == 0) {
+            $registerError = "Sorry, your file was not uploaded.";
         } else {
-            $pass = sha1($registerPassword);
-            $sql = "INSERT INTO user(firstName,lastName,email,password,photo,userType) VALUES('$registerFirstName','$registerLastName','$registerEmail','$pass','Photos/1.png',0)";
-            if ($conn->query($sql) === TRUE) {
-                $sql2 = "select * from user where(email = '$registerEmail')";
-                $result = $conn->query($sql2);
+            if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
+                $registerImage = $target_file;
+
+                $sql = "select * from user where (email='$registerEmail');";
+                $result = $conn->query($sql);
                 if ($result->num_rows > 0) {
-                    while ($row = $result->fetch_assoc()) {
+                    $registerError = "Email is already registered in database.";
+                } else {
+                    $pass = sha1($registerPassword);
+                    $sql = "INSERT INTO user(firstName,lastName,email,password,photo,userType) VALUES('$registerFirstName','$registerLastName','$registerEmail','$pass','$registerImage',0)";
+                    if ($conn->query($sql) === TRUE) {
+                        $sql2 = "select * from user where(email = '$registerEmail')";
+                        $result = $conn->query($sql2);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
 
-                        $_SESSION['firstName'] = $row['firstName'];
-                        $_SESSION['lastName'] = $row['lastName'];
-                        $_SESSION['photo'] = $row['photo'];
+                                $_SESSION['firstName'] = $row['firstName'];
+                                $_SESSION['lastName'] = $row['lastName'];
+                                $_SESSION['photo'] = $row['photo'];
 
+                            }
+
+                        }
+                        header("Location: home.php");
+
+                    } else {
+                        $registerError = "Something went wrong try again.";
                     }
-
                 }
-                header("Location: home.php");
-
             } else {
-                $registerError = "Something went wrong try again.";
+                $registerError = "Sorry, there was an error uploading your file.";
             }
         }
 
@@ -93,7 +119,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </div>
             </div>
         </form>
-        <form action="" method="POST" class="col-lg-6" id="registerForm" name="signUp">
+        <form action="" method="POST" class="col-lg-6" id="registerForm" name="signUp" enctype="multipart/form-data">
             <div class="formStyle" style="">
                 <h1>Register Form</h1>
                 <label class="registerErrorMessage"> <?php echo $registerError ?></label>
@@ -106,6 +132,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                        placeholder="Password">
                 <input type="password" class="registerInput" id="registerConfirmPassword" name="registerConfirmPassword"
                        placeholder="Confirm Password">
+                <input type="file" name="fileToUpload" id="fileToUpload">
                 <div style="display: flex;justify-content: flex-end">
                     <input type="submit" class="registerButton" name="signUp" value="SIGNUP">
                 </div>
