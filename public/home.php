@@ -4,6 +4,10 @@ include_once "../config/db_config.php";
 //if (!isset($_SESSION['email'])) {
 //    header("Location: index.php");
 //}
+$cookie_name = "cart";
+$cookie_value = array();
+setcookie($cookie_name, json_encode($cookie_value), time() + (86400 * 30), "/"); // 86400 = 1 day
+
 ?>
 
 
@@ -71,6 +75,10 @@ include_once "../config/db_config.php";
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
+            $id = $row['id'];
+            $name = $row['name'];
+            $price = $row['price'];
+            $product_photo = $row['photo'];
             ?>
             <div class="productItemContainer col-lg-4 col-md-6">
 
@@ -86,13 +94,19 @@ include_once "../config/db_config.php";
                             </div>
                         </a>
                         <div class="productViewIcon" style="background-color: #333333">
-                            <a href="./Cart/cart.php" target="tab">
+                            <divx href="" target="tab"
+                                  onclick="myAjax(
+                                  <?php echo $id; ?>,
+                                          `<?php echo $name; ?>`,
+                                  <?php echo $price; ?>,
+                                          `<?php echo $product_photo; ?>`,
+                                          )">
                                 <img src="../assets/icons/cart.png" alt="" height="20px" width="20px">
-                            </a>
+                            </divx>
                         </div>
                     </div>
                     <div class="productNameContainer">
-                        <h5 class="productTitle"><?= $row['name']?></h5>
+                        <h5 class="productTitle"><?= $row['name'] ?></h5>
                     </div>
                 </div>
 
@@ -106,6 +120,23 @@ include_once "../config/db_config.php";
 </div>
 
 <?php require "./_inc/footer.php" ?>
+<script>
+    function myAjax(id, name, price, photo) {
+        $.ajax({
+            type: "POST",
+            url: './_inc/addItemToCookie.php',
+            data: {
+                "id": id,
+                "name": name,
+                "price": price,
+                "photo": photo
+            },
+            success: function (html) {
+                alert(html);
+            }
 
+        });
+    }
+</script>
 </body>
 </html>

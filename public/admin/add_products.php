@@ -1,6 +1,6 @@
 <?php
 include_once "../../config/db_config.php";
-$target_dir = "../uploads/products/";
+$target_dir = "../../uploads/products/";
 $uploadOk = 1;
 $error = '';
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

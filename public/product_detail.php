@@ -14,6 +14,7 @@ $product_photo = '';
 
 if ($result->num_rows > 0) {
     while ($row = $result->fetch_assoc()) {
+        $product_id = $row['id'];
         $product_name = $row['name'];
         $product_description = $row['description'];
         $product_price = $row['price'];
@@ -41,9 +42,14 @@ if ($result->num_rows > 0) {
 
             <input type="number" class="quantityInput" value="1">
             <br>
-            <a href=""  class="addToCartBtn">
+            <div href="" class="addToCartBtn" onclick="myAjax(
+            <?php echo $product_id; ?>,
+                    `<?php echo $product_name; ?>`,
+            <?php echo $product_price; ?>,
+            `<?php echo $product_photo; ?>`,
+                    )">
                 Add to Cart
-            </a>
+            </div>
         </div>
     </div>
 </div>
@@ -51,3 +57,21 @@ if ($result->num_rows > 0) {
 
 <?php include '../public/_inc/footer.php'; ?>
 
+<script>
+    function myAjax(id, name, price, photo) {
+        $.ajax({
+            type: "POST",
+            url: './_inc/addItemToCookie.php',
+            data: {
+                "id": id,
+                "name": name,
+                "price": price,
+                "photo": photo
+            },
+            success: function (html) {
+                alert(html);
+            }
+
+        });
+    }
+</script>
