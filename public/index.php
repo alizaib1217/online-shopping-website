@@ -1,6 +1,9 @@
 <?php
+
+$_GET['title'] = "Login & Register";
 include_once "../config/db_config.php";
 session_start();
+session_destroy();
 if (isset($_SESSION['email'])) {
     header("Location: home.php");
 }
@@ -60,6 +63,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 $_SESSION['firstName'] = $row['firstName'];
                                 $_SESSION['lastName'] = $row['lastName'];
                                 $_SESSION['photo'] = $row['photo'];
+                                $_SESSION['userType'] = $row['userType'];
+
 
                             }
 
@@ -82,9 +87,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
+                var_dump($row);
                 $_SESSION['firstName'] = $row['firstName'];
                 $_SESSION['lastName'] = $row['lastName'];
                 $_SESSION['email'] = $row['email'];
+                $_SESSION['userType'] = $row['userType'];
             }
             header('Location: home.php');
 

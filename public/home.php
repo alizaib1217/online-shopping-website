@@ -1,9 +1,11 @@
 <?php
 include_once "../config/db_config.php";
-//session_start();
+session_start();
 //if (!isset($_SESSION['email'])) {
 //    header("Location: index.php");
 //}
+$admin = $_SESSION['userType'];
+echo $admin;
 $cookie_name = "cart";
 $cookie_value = array();
 setcookie($cookie_name, json_encode($cookie_value), time() + (86400 * 30), "/"); // 86400 = 1 day
@@ -79,10 +81,12 @@ setcookie($cookie_name, json_encode($cookie_value), time() + (86400 * 30), "/");
             $name = $row['name'];
             $price = $row['price'];
             $product_photo = $row['photo'];
+            $photo = substr($row['photo'], 3);
+
             ?>
             <div class="productItemContainer col-lg-4 col-md-6">
 
-                <img src="<?= $row['photo'] ?>" alt="Product1" class="productItem">
+                <img src="<?= $photo; ?>" alt="Product1" class="productItem">
 
                 <div class="productItemHover">
                     <div class="priceTag"><?= $row['price'] ?> pkr</div>
@@ -108,6 +112,11 @@ setcookie($cookie_name, json_encode($cookie_value), time() + (86400 * 30), "/");
                     <div class="productNameContainer">
                         <h5 class="productTitle"><?= $row['name'] ?></h5>
                     </div>
+                    <?php if ($admin) { ?>
+                        <button type="submit" class="btn btn-danger" onclick="deleteProduct(<?= $id ?>)">Delete</button>
+
+                    <?php }
+                    ?>
                 </div>
 
             </div>
@@ -133,6 +142,24 @@ setcookie($cookie_name, json_encode($cookie_value), time() + (86400 * 30), "/");
             },
             success: function (html) {
                 alert(html);
+            }
+
+        });
+    }
+
+    function deleteProduct(id) {
+        $.ajax({
+            type: "POST",
+            url: './_inc/deleteProduct.php',
+            data: {
+                "id": id
+            },
+            success: function (html) {
+                if (html) {
+                    location.reload()
+                } else {
+                    alert("Something went wrong, try again.")
+                }
             }
 
         });

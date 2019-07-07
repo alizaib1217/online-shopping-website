@@ -30,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
             $registerImage = $target_file;
 
-            $sql = "INSERT INTO product(name,description,price,quantity,photo) VALUES ('$name','$description','$price','$quantity','$registerImage')";
+            $sql = "INSERT INTO product (name,description,price,quantity,photo) VALUES ('$name','$description','$price','$quantity','$registerImage')";
 
             if ($conn->query($sql) === TRUE) {
                 echo "product added";
