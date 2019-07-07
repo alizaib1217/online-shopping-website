@@ -42,7 +42,7 @@ if ($result->num_rows > 0) {
                 <p class="productDescription">Price: <span><?= $product_price ?></span>pkr</p>
             </div>
 
-            <input type="number" class="quantityInput" value="1">
+            <input type="number" class="quantityInput" value="1" min="1" max="1">
             <br>
             <div href="" class="addToCartBtn" onclick="myAjax(
             <?php echo $product_id; ?>,
