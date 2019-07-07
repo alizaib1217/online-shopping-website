@@ -66,71 +66,41 @@ include_once "../config/db_config.php";
     <p>LATEST PRODUCTS</p>
 </div>
 <div class="container productsContainer">
-    <div class="productItemContainer col-lg-4 col-md-6">
-        <img src="../assets/images/product1.jpg" alt="Product1" class="productItem">
-        <div class="productItemHover">
-            <div class="priceTag">$40</div>
-            <div>
-                <div class="productViewIcon">
-                    <img src="../assets/icons/eye.png" alt="" height="25px" width="20px">
-                </div>
-                <div class="productViewIcon" style="background-color: #333333">
-                    <a href="./Cart/cart.php" target="tab">
-                        <img src="../assets/icons/cart.png" alt="" height="20px" width="20px">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+    <?php
+    $sql = "SELECT * FROM PRODUCT";
+    $result = $conn->query($sql);
+    if ($result->num_rows > 0) {
+        while ($row = $result->fetch_assoc()) {
+            ?>
+            <div class="productItemContainer col-lg-4 col-md-6">
 
-    <div class="productItemContainer col-lg-4 ">
-        <img src="../assets/images/product1.jpg" alt="Product1" class="productItem">
-        <div class="productItemHover">
-            <div class="priceTag">$40</div>
-            <div>
-                <div class="productViewIcon">
-                    <img src="../assets/icons/eye.png" alt="" height="25px" width="20px">
+                <img src="<?= $row['photo'] ?>" alt="Product1" class="productItem">
+
+                <div class="productItemHover">
+                    <div class="priceTag"><?= $row['price'] ?> pkr</div>
+
+                    <div>
+                        <a href="product_detail.php?product_id=<?= $row['id'] ?>">
+                            <div class="productViewIcon">
+                                <img src="../assets/icons/eye.png" alt="" height="25px" width="20px">
+                            </div>
+                        </a>
+                        <div class="productViewIcon" style="background-color: #333333">
+                            <a href="./Cart/cart.php" target="tab">
+                                <img src="../assets/icons/cart.png" alt="" height="20px" width="20px">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="productNameContainer">
+                        <h5 class="productTitle"><?= $row['name']?></h5>
+                    </div>
                 </div>
-                <div class="productViewIcon" style="background-color: #333333">
-                    <a href="./Cart/cart.php" target="tab">
-                        <img src="../assets/icons/cart.png" alt="" height="20px" width="20px">
-                    </a>
-                </div>
+
             </div>
-        </div>
-    </div>
-    <div class="productItemContainer col-lg-4 ">
-        <img src="../assets/images/product1.jpg" alt="Product1" class="productItem">
-        <div class="productItemHover">
-            <div class="priceTag">$40</div>
-            <div>
-                <div class="productViewIcon">
-                    <img src="../assets/icons/eye.png" alt="" height="25px" width="20px">
-                </div>
-                <div class="productViewIcon" style="background-color: #333333">
-                    <a href="./Cart/cart.php" target="tab">
-                        <img src="../assets/icons/cart.png" alt="" height="20px" width="20px">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="productItemContainer col-lg-4 ">
-        <img src="../assets/images/product1.jpg" alt="Product1" class="productItem">
-        <div class="productItemHover">
-            <div class="priceTag">$40</div>
-            <div>
-                <div class="productViewIcon">
-                    <img src="../assets/icons/eye.png" alt="" height="25px" width="20px">
-                </div>
-                <div class="productViewIcon" style="background-color: #333333">
-                    <a href="./Cart/cart.php" target="tab">
-                        <img src="../assets/icons/cart.png" alt="" height="20px" width="20px">
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
+            <?php
+        }
+    }
+    ?>
 
 
 </div>

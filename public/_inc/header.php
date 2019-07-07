@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login or Register</title>
+    <title><?= $_GET['title'] ?></title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -10,6 +10,7 @@
     <!--    <script src="./js/jquery-3.2.1.min.js"></script>-->
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/authentication.css">
+    <link rel="stylesheet" href="../css/product_detail.css">
 
 
 </head>
@@ -118,7 +119,7 @@
         <!--    </div>-->
         <div class="header-icons">
             <img src="../assets/icons/person.png" class="person-profile" alt="Profile">
-            <img src="../assets/icons/cart.png" class="my-cart" alt="Cart">
+            <img src="../assets/icons/cart-2.png" class="my-cart" alt="Cart">
         </div>
     </div>
 </div>
