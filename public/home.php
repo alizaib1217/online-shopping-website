@@ -1,11 +1,14 @@
 <?php
 include_once "../config/db_config.php";
-session_start();
-//if (!isset($_SESSION['email'])) {
+if(session_id() === ''){
+   session_start();
+}
+
 //    header("Location: index.php");
 //}
+
 $admin = $_SESSION['userType'];
-echo $admin;
+//echo $admin;
 $cookie_name = "cart";
 $cookie_value = array();
 setcookie($cookie_name, json_encode($cookie_value), time() + (86400 * 30), "/"); // 86400 = 1 day
@@ -80,7 +83,7 @@ setcookie($cookie_name, json_encode($cookie_value), time() + (86400 * 30), "/");
             $id = $row['id'];
             $name = $row['name'];
             $price = $row['price'];
-            $product_photo = $row['photo'];
+            $product_photo = substr($row['photo'], 3);
             $photo = substr($row['photo'], 3);
 
             ?>
@@ -102,7 +105,7 @@ setcookie($cookie_name, json_encode($cookie_value), time() + (86400 * 30), "/");
                                   onclick="myAjax(
                                   <?php echo $id; ?>,
                                           `<?php echo $name; ?>`,
-                                  <?php echo $price; ?>,
+                                  <?php echo $price; ?> ,
                                           `<?php echo $product_photo; ?>`,
                                           )">
                                 <img src="../assets/icons/cart.png" alt="" height="20px" width="20px">

@@ -62,6 +62,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
                                 $_SESSION['firstName'] = $row['firstName'];
                                 $_SESSION['lastName'] = $row['lastName'];
+                                $_SESSION['email'] = $row['email'];
                                 $_SESSION['photo'] = $row['photo'];
                                 $_SESSION['userType'] = $row['userType'];
 
@@ -91,6 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $_SESSION['firstName'] = $row['firstName'];
                 $_SESSION['lastName'] = $row['lastName'];
                 $_SESSION['email'] = $row['email'];
+                $_SESSION['photo'] = $row['photo'];
                 $_SESSION['userType'] = $row['userType'];
             }
             header('Location: home.php');

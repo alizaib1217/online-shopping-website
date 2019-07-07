@@ -1,5 +1,6 @@
 <?php
 include_once "../config/db_config.php";
+session_start();
 $_GET['title'] = "Product details";
 include '../public/_inc/header.php';
 
@@ -18,7 +19,8 @@ if ($result->num_rows > 0) {
         $product_name = $row['name'];
         $product_description = $row['description'];
         $product_price = $row['price'];
-        $product_photo = $row['photo'];
+        $product_photo = substr($row['photo'], 3);
+
     }
 }
 

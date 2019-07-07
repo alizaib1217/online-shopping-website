@@ -1,6 +1,6 @@
 <h1>Group members</h1>
 
-<h2>Education Contact:</h2>
+<h2>Educational Contact:</h2>
 <h4>Hadi Tariq ~ 15009065366@umt.edu.pk</h4>
 <h4>Ali Zaib ~ 15009065245@umt.edu.pk</h4>
 

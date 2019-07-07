@@ -1,3 +1,7 @@
+<?php
+//include_once '../../config/db_config.php';
+//session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -43,7 +47,8 @@
             height: 45px;
             margin-bottom: 10px;
         }
-        .checkOutBanner{
+
+        .checkOutBanner {
             height: 86px;
             width: 320px;
             position: absolute;
@@ -52,7 +57,7 @@
             transform: translate(-50%, -50%);
         }
 
-        .row{
+        .row {
             margin: 0;
         }
 
@@ -172,7 +177,7 @@
             transform: translate(-50%, -50%);
         }
 
-        .success-message{
+        .success-message {
             justify-content: center;
             align-items: center;
             color: green;
@@ -207,9 +212,50 @@
         </ul>
 
         <!--    </div>-->
-        <div class="header-icons">
-            <img src="../assets/icons/person.png" class="person-profile" alt="Profile">
-            <a href="../public/cart.php"><img src="../assets/icons/cart-2.png" class="my-cart" alt="Cart"></a>
+        <div class="header-icons" style="display: flex;align-items: center;">
+            <?php if (!isset($_SESSION['email'])) { ?>
+
+            <div><a href="../public/index.php">Login <span>/</span> register</a></div>
+            <?php } ?>
+
+            <?php if (isset($_SESSION['email'])) { ?>
+                <div class="dropdown">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                            style="background-color: #e7e7e7;border: 0">
+                        <img src="../assets/icons/person.png" class="person-profile" alt="Profile">
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                         style="padding: 20px;text-align: center">
+                        <div>
+                            <img src="<?= $_SESSION['photo'] ?>" alt="" height="50px" width="50px"
+                                 style="border-radius:25px;border: 1px solid #cecece">
+                            <p class="text-center"><?= $_SESSION['firstName'] ?></p>
+                        </div>
+                        <button class="dropdown-item" onclick="logout()" style="color: red;">Logout</button>
+
+                    </div>
+                </div>
+            <?php } ?>
+            <a href="../public/cart.php" style="margin-left: 10px"><img src="../assets/icons/cart-2.png" class="my-cart"
+                                                                        alt="Cart"></a>
         </div>
     </div>
 </div>
+
+<script>
+    function logout() {
+        $.ajax({
+            type: "POST",
+            url: './_inc/logout.php',
+            data: {},
+            success: function (html) {
+                if (html) {
+                    location.href = "../public/index.php";
+
+                }
+            }
+
+        });
+    }
+</script>
