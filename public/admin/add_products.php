@@ -49,38 +49,66 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Admin ~ Add Products</title>
+
+    <style>
+        .form-group {
+            margin: 20px;
+        }
+
+        input {
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
 
-<h2>Add Product
+<h2 style="text-align: center">Add Product</h2>
 
-    <form action="" method="post" enctype="multipart/form-data">
-        <div class="form-group">
+<form action="" method="post" enctype="multipart/form-data"
+      style="width:fit-content;margin: 0 auto;margin-top: 50px;border: 1px solid #e0e0e0">
+    <div class="form-group" style="display: flex;flex-direction: row">
+        <div style="width: 150px">
             <label for="name">Name:</label>
-            <input type="text" class="form-control" id="name" name="name">
         </div>
-        <div class="form-group">
+        <input type="text" class="form-control" id="name" name="name">
+    </div>
+    <div class="form-group" style="display: flex;flex-direction: row">
+        <div style="width: 150px">
             <label for="des">Description:</label>
-            <input type="text" class="form-control" id="des" name="des">
         </div>
+        <input type="text" class="form-control" id="des" name="des">
+    </div>
 
-        <div class="form-group">
+    <div class="form-group" style="display: flex;flex-direction: row">
+        <div style="width: 150px">
             <label for="price">Price:</label>
-            <input type="text" class="form-control" id="price" name="price">
         </div>
 
-        <div class="form-group">
+        <input type="text" class="form-control" id="price" name="price">
+    </div>
+
+    <div class="form-group" style="display: flex;flex-direction: row">
+        <div style="width: 150px">
             <label for="quantity">Quantity:</label>
-            <input type="text" class="form-control" id="quantity" name="quantity">
         </div>
+        <input type="text" class="form-control" id="quantity" name="quantity">
+    </div>
 
-        <div class="form-group">
+    <div class="form-group" style="display: flex;flex-direction: row">
+        <div style="width: 150px">
             <label for="image">Image:</label>
-            <input type="file" name="fileToUpload" class="form-control" id="fileToUpload">
         </div>
-        <p><?php echo $error ?> </p>
-        <button type="submit" class="btn btn-default">Submit</button>
-    </form>
+        <input type="file" name="fileToUpload" class="form-control" id="fileToUpload">
+    </div>
+    <p><?php echo $error ?> </p>
+    <br>
+    <div style="display: flex;flex: 1;justify-content: flex-end;padding: 0px 20px; margin-bottom: 10px">
+        <button type="submit"
+                style="padding: 0px 36px;background-color: #C39D6D; border-radius: 5px; border: 0;color: white;height: 30px">
+            Submit
+        </button>
+    </div>
+</form>
 
 
 </body>
