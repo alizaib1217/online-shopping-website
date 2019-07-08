@@ -5,7 +5,7 @@ if(session_id() === ''){
 }
 
 
-$admin = $_SESSION['userType'];
+$admin = isset($_SESSION['userType']);
 //echo $admin;
  // 86400 = 1 day
 

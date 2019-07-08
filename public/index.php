@@ -3,6 +3,11 @@
 $_GET['title'] = "Login & Register";
 include_once "../config/db_config.php";
 session_start();
+$cookie_name = "cart";
+if (!isset($_COOKIE[$cookie_name])) {
+    $cookie_value = array();
+    setcookie($cookie_name, json_encode($cookie_value), time() + (86400 * 30), "/");
+}
 if (isset($_SESSION['email'])) {
     header("Location: home.php");
 }
@@ -11,8 +16,6 @@ $registerError = '';
 
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-
-
 
 
     $target_dir = "../uploads/";
