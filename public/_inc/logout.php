@@ -6,6 +6,6 @@
  * Time: 10:27 PM
  */
 
-//session_start();
+session_start();
 session_destroy();
 echo true;

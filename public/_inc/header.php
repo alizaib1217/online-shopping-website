@@ -185,6 +185,13 @@
             flex-direction: column;
             display: none;
         }
+        .banner {
+            margin-bottom: 50px;
+        }
+
+        .productsContainer {
+            margin-bottom: 50px;
+        }
     </style>
 
 </head>

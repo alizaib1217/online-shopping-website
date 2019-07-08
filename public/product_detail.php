@@ -26,8 +26,8 @@ if ($result->num_rows > 0) {
 
 ?>
 
-<div class="banner2">
-    <!--    <p>skdjfdk</p>-->
+<div class="banner2" style="display: flex;justify-content: center">
+    <h2>Product Detail</h2>
 </div>
 
 

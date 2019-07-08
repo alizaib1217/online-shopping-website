@@ -3,7 +3,6 @@
 $_GET['title'] = "Login & Register";
 include_once "../config/db_config.php";
 session_start();
-session_destroy();
 if (isset($_SESSION['email'])) {
     header("Location: home.php");
 }
@@ -13,7 +12,9 @@ $registerError = '';
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
-    session_start();
+
+
+
     $target_dir = "../uploads/";
     $uploadOk = 1;
     $registerFirstName = isset($_POST["registerFirstName"]) ? $_POST["registerFirstName"] : "Query Parameter Not passed.";
@@ -88,7 +89,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($result->num_rows > 0) {
             while ($row = $result->fetch_assoc()) {
-                var_dump($row);
+//                var_dump($row);
                 $_SESSION['firstName'] = $row['firstName'];
                 $_SESSION['lastName'] = $row['lastName'];
                 $_SESSION['email'] = $row['email'];

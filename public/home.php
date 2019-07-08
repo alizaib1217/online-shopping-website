@@ -4,45 +4,15 @@ if(session_id() === ''){
    session_start();
 }
 
-//    header("Location: index.php");
-//}
 
 $admin = $_SESSION['userType'];
 //echo $admin;
-$cookie_name = "cart";
-$cookie_value = array();
-setcookie($cookie_name, json_encode($cookie_value), time() + (86400 * 30), "/"); // 86400 = 1 day
+ // 86400 = 1 day
 
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-    <title>Home</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>-->
-    <script src="./js/jquery-3.2.1.min.js"></script>
-    <link rel="stylesheet" href="../css/style.css">
-
-
-    <style>
-        .banner {
-            margin-bottom: 50px;
-        }
-
-        .productsContainer {
-            margin-bottom: 50px;
-        }
-    </style>
-</head>
-<body>
-<?php require "./_inc/header.php" ?>
+<?php $_GET['title'] = "Home"; require "./_inc/header.php" ?>
 
 <div class="banner">
     <img src="../assets/images/banner.jpg" class="banner-img">
@@ -101,7 +71,7 @@ setcookie($cookie_name, json_encode($cookie_value), time() + (86400 * 30), "/");
                             </div>
                         </a>
                         <div class="productViewIcon" style="background-color: #333333">
-                            <divx href="" target="tab"
+                            <div href="" target="tab"
                                   onclick="myAjax(
                                   <?php echo $id; ?>,
                                           `<?php echo $name; ?>`,
@@ -109,7 +79,7 @@ setcookie($cookie_name, json_encode($cookie_value), time() + (86400 * 30), "/");
                                           `<?php echo $product_photo; ?>`,
                                           )">
                                 <img src="../assets/icons/cart.png" alt="" height="20px" width="20px">
-                            </divx>
+                            </div>
                         </div>
                     </div>
                     <div class="productNameContainer">
